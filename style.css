@@ -1,0 +1,77 @@
+:root {
+  --color-bg: #f4f4f4;
+  --color-white: #fff;
+  --color-text: #222;
+  --color-hover: #eaeaea;
+  --border-radius: 8px;
+  --gap: 24px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  overflow-y: auto; /* pozwól na scroll jeśli potrzeba */
+}
+
+.board {
+  width: 90%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--gap);
+}
+
+.tool-tile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 20px;
+  background: var(--color-white);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+  transition: background 0.25s ease, transform 0.15s ease;
+  min-height: 110px;
+  font-size: 1.3rem;
+}
+
+.tool-tile:hover,
+.tool-tile:focus-visible {
+  background: var(--color-hover);
+  transform: translateY(-3px);
+  outline: none;
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.tool-tile:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+}
+
+.tool-icon {
+  width: 56px;
+  height: 56px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.tool-label {
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Na bardzo małych ekranach jedna kolumna */
+@media (max-width: 480px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
